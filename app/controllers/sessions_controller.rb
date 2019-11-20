@@ -47,10 +47,12 @@ class SessionsController < ApplicationController
     # end
 
     if params[:name]
-      session[:name] = params[:name]
-      redirect_to root_path
-    elsif params[:name] == ""
-      redirect_to login_path
+      if params[:name] == ""
+         redirect_to login_path
+      else
+        session[:name] = params[:name]
+        redirect_to root_path
+      end
     else
       redirect_to login_path
     end
